@@ -1,0 +1,53 @@
+{
+    "year": "2022",
+    "months": [
+      {
+        "month": "janvier",
+        "amount": 28
+      },
+      {
+        "month": "fevrier",
+        "amount":  48
+      },
+      {
+        "month": "mars",
+        "amount": 40
+      },
+      {
+        "month": "avril",
+        "amount": 19
+      },
+      {
+        "month": "mai",
+        "amount": 86
+      },
+      {
+        "month": "juin",
+        "amount": 27
+      },
+      {
+        "month": "juillet",
+        "amount": 90
+      },
+      {
+        "month": "aout",
+        "amount": 65
+      },
+      {
+        "month": "septembre",
+        "amount": 59
+      },
+      {
+        "month": "octobre",
+        "amount": 80
+      },
+      {
+        "month": "novembre",
+        "amount": 81
+      },
+      {
+        "month": "decembre",
+        "amount": 56
+      }
+    ]
+  }

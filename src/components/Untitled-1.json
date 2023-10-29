@@ -1,0 +1,53 @@
+{
+  "year": "2023",
+  "months": [
+    {
+      "month": "janvier",
+      "amount": 65
+    },
+    {
+      "month": "fevrier",
+      "amount": 59
+    },
+    {
+      "month": "mars",
+      "amount": 80
+    },
+    {
+      "month": "avril",
+      "amount": 81
+    },
+    {
+      "month": "mai",
+      "amount": 56
+    },
+    {
+      "month": "juin",
+      "amount": 55
+    },
+    {
+      "month": "juillet",
+      "amount": 40
+    },
+    {
+      "month": "aout",
+      "amount": 28
+    },
+    {
+      "month": "septembre",
+      "amount": 48
+    },
+    {
+      "month": "octobre",
+      "amount": 40
+    },
+    {
+      "month": "novembre",
+      "amount": 19
+    },
+    {
+      "month": "decembre",
+      "amount": 86
+    }
+  ]
+}
