@@ -49,6 +49,31 @@ export default function Revenu() {
     
     useEffect(() => {
       //  ProductService.getProductsMini().then((data) => setProducts(data));
+      const data = [
+        {
+            "id": 1,
+            "name": "Brin D'Bois",
+            "tuesday": null,
+            "wednesday": 14,
+            "thursday": null,
+            "friday": 18,
+            "saturday": null,
+            "sunday": null,
+            "cumulatif": 25
+        },
+        {
+            "id": 2,
+            "name": "Initiative Sociales",
+            "tuesday": null,
+            "wednesday": 14,
+            "thursday": null,
+            "friday": 18,
+            "saturday": null,
+            "sunday": null,
+            "cumulatif": 25
+        }
+    ];
+    setProducts(data);
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const isPositiveInteger = (val) => {

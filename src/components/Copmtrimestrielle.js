@@ -10,17 +10,21 @@ export default function Copmtrimestrielle() {
         const textColor = documentStyle.getPropertyValue('--text-color');
         const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
         const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+
+        const currentYear = new Date().getFullYear();
+        const previousYear = currentYear - 1;
+
         const data = {
             labels: ['JFM', 'AMJ', 'JOS', 'OND'],
             datasets: [
                 {
-                    label: '2022',
+                    label: previousYear.toString(),
                     backgroundColor: documentStyle.getPropertyValue('--blue-500'),
                     borderColor: documentStyle.getPropertyValue('--blue-500'),
                     data: [65, 59, 80, 81]
                 },
                 {
-                    label: '2023',
+                    label: currentYear.toString(),
                     backgroundColor: documentStyle.getPropertyValue('--pink-500'),
                     borderColor: documentStyle.getPropertyValue('--pink-500'),
                     data: [28, 48, 40, 19]

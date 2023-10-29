@@ -1,33 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { Chart } from 'primereact/chart';
+import TotalRevenuService from '../services/TotalRevenuService';
 
 export default function Copmmensuelles() {
     const [chartData, setChartData] = useState({});
     const [chartOptions, setChartOptions] = useState({});
 
     useEffect(() => {
+
+        const currentYear = new Date().getFullYear();
+        const previousYear = currentYear - 1;
+
+        const dataSet = buildDataset();
+        
+        TotalRevenuService.findByYear(currentYear).then(data => {
+            dataSet.labels = data.months.map(m => m.month);
+            dataSet.datasets[0].data = data.months.map(m => m.amount);
+            TotalRevenuService.findByYear(previousYear).then(data => {
+                dataSet.datasets[1].data = data.months.map(m => m.amount);
+                setChartData(dataSet);
+            });
+        });
+
+
+        setChartOptions(buildOptions);
+    }, []);
+
+    const buildOptions = () => {
+
         const documentStyle = getComputedStyle(document.documentElement);
         const textColor = documentStyle.getPropertyValue('--text-color');
         const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
         const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
-        const data = {
-            labels: ['janvier', 'fevrier', 'mars', 'avril', 'mai', 'juin', 'juillet','aout', 'septembre', 'octobre', 'novembre', 'decembre'],
-            datasets: [
-                {
-                    label: '2022',
-                    backgroundColor: documentStyle.getPropertyValue('--blue-500'),
-                    borderColor: documentStyle.getPropertyValue('--blue-500'),
-                    data: [65, 59, 80, 81, 56, 55, 40,28, 48, 40, 19, 86]
-                },
-                {
-                    label: '2023',
-                    backgroundColor: documentStyle.getPropertyValue('--pink-500'),
-                    borderColor: documentStyle.getPropertyValue('--pink-500'),
-                    data: [28, 48, 40, 19, 86, 27, 90,65, 59, 80, 81, 56]
-                }
-            ]
-        };
-        const options = {
+
+        const result = {
             maintainAspectRatio: false,
             aspectRatio: 0.8,
             plugins: {
@@ -62,9 +68,37 @@ export default function Copmmensuelles() {
             }
         };
 
-        setChartData(data);
-        setChartOptions(options);
-    }, []);
+        return result;
+    }
+
+    const buildDataset = () => {
+
+        const documentStyle = getComputedStyle(document.documentElement);
+
+        const currentYear = new Date().getFullYear();
+        const previousYear = currentYear - 1;
+        const result = {
+            labels: [],
+            datasets: [
+                {
+                    label: previousYear.toString(),
+                    backgroundColor: documentStyle.getPropertyValue('--blue-500'),
+                    borderColor: documentStyle.getPropertyValue('--blue-500'),
+                    data: []
+                },
+                {
+                    label: currentYear.toString(),
+                    backgroundColor: documentStyle.getPropertyValue('--pink-500'),
+                    borderColor: documentStyle.getPropertyValue('--pink-500'),
+                    data: []
+                }
+            ]
+        };
+        // result.labels = data.months.map(m => m.month);
+        // result.datasets[0].data = data.months.map(m => m.amount);
+        // result.datasets[1].data = data.months.map(m => m.amount);
+        return result;
+    }
 
     return (
         <div className="card">
